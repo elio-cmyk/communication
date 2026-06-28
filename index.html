@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="starfield"></div>
+    
     <div class="container">
-        <div class="starfield"></div>
-        
         <div class="main-content">
             <div class="header">
                 <h1>🛰️ CENTRE DE CONTRÔLE ISS</h1>
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="audio-section">
-                        <button id="audio-btn" class="audio-btn" title="Appuyez pour écouter le message encodé">
+                        <button id="audio-btn" class="audio-btn" type="button">
                             🔊 ÉCOUTER LE MESSAGE
                         </button>
                         <div class="audio-visualizer" id="visualizer">
@@ -42,13 +42,14 @@
                     <div class="code-input-section">
                         <label for="code-input">Code d'Authentification :</label>
                         <input 
-                            type="password" 
+                            type="text"
                             id="code-input" 
                             class="code-input" 
                             placeholder="Entrez le code..."
                             maxlength="10"
+                            autocomplete="off"
                         >
-                        <button id="send-btn" class="send-btn">ENVOYER</button>
+                        <button id="send-btn" class="send-btn" type="button">ENVOYER</button>
                     </div>
 
                     <div class="feedback" id="feedback"></div>
@@ -94,7 +95,7 @@
                 <p class="reward-code">9</p>
             </div>
             <p class="mission-message">"Per aspera ad astra" - À travers les épreuves vers les étoiles</p>
-            <button class="modal-btn" onclick="location.reload()">Nouvelle tentative</button>
+            <button class="modal-btn" type="button" onclick="location.reload()">Nouvelle tentative</button>
         </div>
     </div>
 
@@ -104,7 +105,7 @@
             <h2>❌ ERREUR D'AUTHENTIFICATION</h2>
             <p>Le code est incorrect.</p>
             <p class="error-message">Veuillez vérifier et réessayer.</p>
-            <button class="modal-btn" onclick="closeModal()">Fermer</button>
+            <button class="modal-btn" type="button" onclick="closeModal()">Fermer</button>
         </div>
     </div>
 
