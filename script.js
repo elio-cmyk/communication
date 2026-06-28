@@ -6,6 +6,7 @@ const AUDIO_FILE = "voicertool_audio_Henri_28-06-2026_at_17_29_19_on_June_28th_2
 // State
 let attempts = 0;
 let isLocked = false;
+let hintsShown = false;
 
 // DOM Elements - déclarés après le chargement
 let codeInput;
@@ -17,6 +18,7 @@ let timeDisplay;
 let audioBtn;
 let audioElement;
 let visualizer;
+let hintsContainer;
 
 // Initialize DOM elements
 function initDOMElements() {
@@ -29,12 +31,23 @@ function initDOMElements() {
     audioBtn = document.getElementById('audio-btn');
     audioElement = document.getElementById('encoded-audio');
     visualizer = document.getElementById('visualizer');
+    hintsContainer = document.getElementById('hints-container');
     
     console.log('DOM Elements initialized:', {
         codeInput: !!codeInput,
         sendBtn: !!sendBtn,
-        audioBtn: !!audioBtn
+        audioBtn: !!audioBtn,
+        hintsContainer: !!hintsContainer
     });
+}
+
+// Show hints
+function showHints() {
+    if (hintsContainer && !hintsShown) {
+        hintsContainer.style.display = 'block';
+        hintsShown = true;
+        console.log('Hints shown');
+    }
 }
 
 // Update time display
@@ -192,6 +205,9 @@ function wrong(inputCode) {
     console.log('Wrong code:', inputCode);
     showFeedback(`Code incorrect. Tentatives restantes: ${MAX_ATTEMPTS - attempts}`, 'error');
     codeInput.value = '';
+    
+    // Show hints after first error
+    showHints();
     
     // Visual feedback
     codeInput.classList.add('shake');
